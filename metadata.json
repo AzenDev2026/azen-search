@@ -1,0 +1,16 @@
+{
+    "KPlugin": {
+        "Id": "com.azen.winsearch",
+        "Name": "Azen Search",
+        "Name[zh_CN]": "Azen 搜索框",
+        "Description": "A Windows 11 style search box for your panel",
+        "Description[zh_CN]": "Windows 11 风格的搜索框，可固定到面板（任务栏）上",
+        "Icon": "edit-find",
+        "Version": "1.0",
+        "License": "GPL-3.0",
+        "Category": "Utilities"
+    },
+    "X-Plasma-API": "declarativeappletscript",
+    "X-Plasma-MainScript": "ui/main.qml",
+    "KPackageStructure": "Plasma/Applet"
+}

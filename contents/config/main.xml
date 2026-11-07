@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+  <kcfgfile name=""/>
+  <group name="General">
+    <entry name="pillWidth" type="Int">
+      <default>360</default>
+      <min>200</min>
+      <max>600</max>
+    </entry>
+    <entry name="searchEngine" type="Enum">
+      <choices name="google"/>
+      <choices name="bing"/>
+      <choices name="duckduckgo"/>
+      <default>google</default>
+    </entry>
+  </group>
+</kcfg>
