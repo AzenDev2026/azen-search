@@ -16,9 +16,10 @@ PlasmoidItem {
     id: root
     preferredRepresentation: compactRepresentation
 
+
     Layout.preferredWidth: Plasmoid.configuration.pillWidth
-    Layout.minimumWidth: Kirigami.Units.gridUnit * 8
-    Layout.maximumWidth: Kirigami.Units.gridUnit * 40
+    Layout.minimumWidth: Kirigami.Units.gridUnit * 2
+    Layout.maximumWidth: Kirigami.Units.gridUnit * 30
 
     // 网页搜索地址（根据配置的搜索引擎）
     readonly property string webSearchBase: {
@@ -29,7 +30,7 @@ PlasmoidItem {
         }
     }
 
-    // 当前搜索文字（fullRepresentation 里的输入框会双向同步到这里）
+    // 当前搜索文字（弹出面板里的输入框会双向同步到这里）
     property string queryText: ""
 
     // 结果模型：每个 runner（应用、文件、最近文档……）一组
@@ -47,13 +48,14 @@ PlasmoidItem {
             "unitconverter"
         ]
         query: root.queryText
+
     }
 
     // 启动一个搜索结果
     function runMatch(subModel, row) {
         if (!subModel || row < 0 || row >= subModel.count) return
         if (subModel.trigger(row, "", "")) {
-            plasmoid.expanded = false
+            root.expanded = false
         }
     }
 
@@ -71,7 +73,7 @@ PlasmoidItem {
 
     function openWebSearch() {
         Qt.openUrlExternally(root.webSearchBase + encodeURIComponent(root.queryText))
-        plasmoid.expanded = false
+        root.expanded = false
     }
 
     // ---------- 面板上的胶囊搜索框 ----------
@@ -81,12 +83,14 @@ PlasmoidItem {
         implicitWidth: Plasmoid.configuration.pillWidth
         implicitHeight: 32
 
-        onClicked: plasmoid.expanded = !plasmoid.expanded
+        onClicked: root.expanded = !root.expanded
 
         Rectangle {
             id: pillBg
-            anchors.fill: parent
-            anchors.margins: 2
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: parent.width
+            height: parent.height * 0.8
             radius: height / 2
             color: Qt.rgba(Kirigami.Theme.textColor.r,
                            Kirigami.Theme.textColor.g,
@@ -99,9 +103,10 @@ PlasmoidItem {
         }
 
         RowLayout {
-            anchors.fill: parent
-            anchors.leftMargin: 16
-            anchors.rightMargin: 16
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: parent.width * 0.94
+            height: parent.height * 0.8
             spacing: 9
 
             Kirigami.Icon {
@@ -119,6 +124,7 @@ PlasmoidItem {
                 Layout.fillWidth: true
                 elide: Text.ElideRight
                 verticalAlignment: Text.AlignVCenter
+                visible: pill.width >= 140
             }
         }
     }
@@ -146,7 +152,7 @@ PlasmoidItem {
             }
         }
 
-        Keys.onEscapePressed: plasmoid.expanded = false
+        Keys.onEscapePressed: root.expanded = false
 
         ColumnLayout {
             id: panelColumn

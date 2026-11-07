@@ -6,8 +6,8 @@
   <kcfgfile name=""/>
   <group name="General">
     <entry name="pillWidth" type="Int">
-      <default>360</default>
-      <min>200</min>
+      <default>120</default>
+      <min>80</min>
       <max>600</max>
     </entry>
     <entry name="searchEngine" type="Enum">
