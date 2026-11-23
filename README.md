@@ -3,10 +3,20 @@
 A KDE Plasma 6 widget (Plasmoid): a Windows 11 style search box that can be pinned to a panel (taskbar).
 
 - Click the capsule search box to open the search popup
-- Searches: applications, system settings, recent documents, files (Baloo), locations, windows,
-  calculator and unit converter
-- Enter launches the first result; the "Search on the web" row opens a browser search
-- Width and search engine can be adjusted in the widget settings
+- **Fuzzy search**: partial and scattered matches are re-ranked client-side
+  (e.g. `dt` or `dte` finds **DeepTerminal** first instead of random junk)
+- **Windows-style results**: every row shows the app/file icon, its name and
+  a description, grouped under section headers (应用 / 系统设置 / 窗口 …) with
+  a category tag on the right and a "新" badge for newly installed apps
+- **Keyboard friendly**: ↑ / ↓ move the selection, Enter launches the selected
+  result (the first one is preselected, Windows "Best match" style), Esc closes
+- Searches: applications, system settings, recent documents, files (Baloo),
+  locations, windows, calculator and unit converter
+- The "Search on the web" row opens a browser search (Google / Bing / DuckDuckGo)
+- **Appearance options** in the widget settings:
+  - **内部 (Inside)**: plain text ("Search here") or search icon + text
+  - **外壳 (Shell)**: rounded (Windows 11 style) or square (Windows 10 style)
+  - **长度 (Length)**: icon-only, small, medium, large
 
 ## Installation
 
@@ -29,7 +39,7 @@ plasmashell --replace &   # restart plasmashell to load it
 ## Dependencies
 
 - KDE Plasma 6 (KWin / plasmashell 6)
-- krunner, baloo (optional; enables file search)
+- krunner, baloo (for file search: run `balooctl enable` once)
 
 ## License
 

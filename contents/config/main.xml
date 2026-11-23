@@ -16,5 +16,25 @@
       <choices name="duckduckgo"/>
       <default>google</default>
     </entry>
+    <!-- 内部：胶囊内容样式 -->
+    <entry name="innerStyle" type="Enum">
+      <choices name="text"/>
+      <choices name="icontext"/>
+      <default>icontext</default>
+    </entry>
+    <!-- 外壳：圆润（Windows 11 风）还是方形（Windows 10 风） -->
+    <entry name="shellStyle" type="Enum">
+      <choices name="rounded"/>
+      <choices name="square"/>
+      <default>rounded</default>
+    </entry>
+    <!-- 长度：仅图标 / 小 / 中 / 大 -->
+    <entry name="sizePreset" type="Enum">
+      <choices name="iconOnly"/>
+      <choices name="small"/>
+      <choices name="medium"/>
+      <choices name="large"/>
+      <default>medium</default>
+    </entry>
   </group>
 </kcfg>
