@@ -14,14 +14,14 @@ Kirigami.FormLayout {
     QQC2.RadioButton {
         Kirigami.FormData.label: i18n("内部：")
         text: i18n("纯文字（Search here）")
-        checked: Plasmoid.configuration.innerStyle === "text"
-        onToggled: if (checked) Plasmoid.configuration.innerStyle = "text"
+        checked: plasmoid.configuration.innerStyle === "text"
+        onToggled: if (checked) plasmoid.configuration.innerStyle = "text"
     }
 
     QQC2.RadioButton {
         text: i18n("搜索图标 + 文字")
-        checked: Plasmoid.configuration.innerStyle === "icontext"
-        onToggled: if (checked) Plasmoid.configuration.innerStyle = "icontext"
+        checked: plasmoid.configuration.innerStyle === "icontext"
+        onToggled: if (checked) plasmoid.configuration.innerStyle = "icontext"
     }
 
     Kirigami.Separator {
@@ -32,14 +32,14 @@ Kirigami.FormLayout {
     QQC2.RadioButton {
         Kirigami.FormData.label: i18n("外壳：")
         text: i18n("圆润（Windows 11 风）")
-        checked: Plasmoid.configuration.shellStyle === "rounded"
-        onToggled: if (checked) Plasmoid.configuration.shellStyle = "rounded"
+        checked: plasmoid.configuration.shellStyle === "rounded"
+        onToggled: if (checked) plasmoid.configuration.shellStyle = "rounded"
     }
 
     QQC2.RadioButton {
         text: i18n("方形（Windows 10 风）")
-        checked: Plasmoid.configuration.shellStyle === "square"
-        onToggled: if (checked) Plasmoid.configuration.shellStyle = "square"
+        checked: plasmoid.configuration.shellStyle === "square"
+        onToggled: if (checked) plasmoid.configuration.shellStyle = "square"
     }
 
     Kirigami.Separator {
@@ -50,26 +50,26 @@ Kirigami.FormLayout {
     QQC2.RadioButton {
         Kirigami.FormData.label: i18n("长度：")
         text: i18n("仅图标")
-        checked: Plasmoid.configuration.sizePreset === "iconOnly"
-        onToggled: if (checked) Plasmoid.configuration.sizePreset = "iconOnly"
+        checked: plasmoid.configuration.sizePreset === "iconOnly"
+        onToggled: if (checked) plasmoid.configuration.sizePreset = "iconOnly"
     }
 
     QQC2.RadioButton {
         text: i18n("小")
-        checked: Plasmoid.configuration.sizePreset === "small"
-        onToggled: if (checked) Plasmoid.configuration.sizePreset = "small"
+        checked: plasmoid.configuration.sizePreset === "small"
+        onToggled: if (checked) plasmoid.configuration.sizePreset = "small"
     }
 
     QQC2.RadioButton {
         text: i18n("中（原来的大小）")
-        checked: Plasmoid.configuration.sizePreset === "medium"
-        onToggled: if (checked) Plasmoid.configuration.sizePreset = "medium"
+        checked: plasmoid.configuration.sizePreset === "medium"
+        onToggled: if (checked) plasmoid.configuration.sizePreset = "medium"
     }
 
     QQC2.RadioButton {
         text: i18n("大")
-        checked: Plasmoid.configuration.sizePreset === "large"
-        onToggled: if (checked) Plasmoid.configuration.sizePreset = "large"
+        checked: plasmoid.configuration.sizePreset === "large"
+        onToggled: if (checked) plasmoid.configuration.sizePreset = "large"
     }
 
     Kirigami.Separator {
@@ -87,11 +87,11 @@ Kirigami.FormLayout {
             { text: "Bing", value: "bing" },
             { text: "DuckDuckGo", value: "duckduckgo" }
         ]
-        onActivated: Plasmoid.configuration.searchEngine = currentValue
+        onActivated: plasmoid.configuration.searchEngine = currentValue
 
         Component.onCompleted: {
             for (var i = 0; i < model.length; ++i) {
-                if (model[i].value === Plasmoid.configuration.searchEngine) {
+                if (model[i].value === plasmoid.configuration.searchEngine) {
                     currentIndex = i
                     break
                 }
