@@ -2,7 +2,8 @@
 
 A KDE Plasma 6 widget (Plasmoid): a Windows 11 style search box that can be pinned to a panel (taskbar).
 
-- Click the capsule search box to open the search popup
+- Click the capsule search box to open the search popup — it opens
+  **centered on the screen** (Windows search style)
 - **Fuzzy search**: partial and scattered matches are re-ranked client-side
   (e.g. `dt` or `dte` finds **DeepTerminal** first instead of random junk)
 - **Windows-style results**: every row shows the app/file icon, its name and
@@ -13,7 +14,8 @@ A KDE Plasma 6 widget (Plasmoid): a Windows 11 style search box that can be pinn
 - Searches: applications, system settings, recent documents, files (Baloo),
   locations, windows, calculator and unit converter
 - The "Search on the web" row opens a browser search (Google / Bing / DuckDuckGo)
-- **Appearance options** in the widget settings:
+- **Appearance options** in the official config dialog (right-click the
+  widget → Configure Azen Search):
   - **内部 (Inside)**: plain text ("Search here") or search icon + text
   - **外壳 (Shell)**: rounded (Windows 11 style) or square (Windows 10 style)
   - **长度 (Length)**: icon-only, small, medium, large

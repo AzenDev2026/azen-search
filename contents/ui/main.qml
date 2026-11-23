@@ -371,13 +371,47 @@ PlasmoidItem {
         Layout.preferredWidth: width
         Layout.preferredHeight: height
 
-        // 展开时聚焦输入框
+        // ---------- 弹窗居中：把面板窗口移到屏幕正中间（Windows 搜索风格） ----------
+        // 弹窗是面板这一项的克隆实例，所以居中逻辑必须写在这里面，
+        // 用自己的 Window.window 才能拿到真正的弹窗窗口。
+        property int centerTicks: 0
+        Timer {
+            id: centerPopupTimer
+            interval: 30
+            repeat: true
+            onTriggered: {
+                panel.centerTicks++
+                if (panel.centerTicks > 20) {
+                    stop()
+                    return
+                }
+                var win = panel.Window.window
+                if (!win || win.width < 200) return
+                var scr = root.screenGeometry
+                if (!scr || scr.width <= 0) return
+                var cx = Math.round(scr.x + (scr.width - win.width) / 2)
+                var cy = Math.round(scr.y + (scr.height - win.height) / 2)
+                win.x = cx
+                win.y = cy
+            }
+        }
+
+        function recenter() {
+            if (!panel.visible) return
+            panel.centerTicks = 0
+            centerPopupTimer.start()
+        }
+
+        // 展开、以及结果加载导致尺寸变化时，重新居中
         onVisibleChanged: {
             if (visible) {
+                recenter()
                 searchField.forceActiveFocus()
                 searchField.selectAll()
             }
         }
+        onHeightChanged: recenter()
+        onWidthChanged: recenter()
 
         ColumnLayout {
             id: panelColumn
